@@ -6,17 +6,17 @@
   <title>المستكشف الصغير - مدعوم ببحث Google الآمن</title>
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700;900&display=swap" rel="stylesheet">
   
-  <!-- سكريبت محرك بحث جوجل الخاص بك -->
+  <!-- محرك بحث جوجل الآمن -->
   <script async src="https://cse.google.com/cse.js?cx=c784c1f4adf2040c0"></script>
 
   <style>
     :root {
-      --primary: #4A90E2;
+      --primary: #2B6CB0;
       --secondary: #FFB300;
-      --accent: #7ED321;
-      --bg: #F0F8FF;
-      --text: #2C3E50;
-      --admin-bg: #34495E;
+      --accent: #48BB78;
+      --bg: #F4F8FC;
+      --text: #2D3748;
+      --admin-bg: #2C3E50;
     }
 
     * {
@@ -35,7 +35,7 @@
     }
 
     header {
-      padding: 1.2rem 2rem;
+      padding: 1.2rem 2.5rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -44,7 +44,7 @@
     }
 
     .logo {
-      font-size: 1.8rem;
+      font-size: 1.9rem;
       font-weight: 900;
       color: var(--primary);
       display: flex;
@@ -53,63 +53,58 @@
     }
 
     .badge-age {
-      background: #E8F5E9;
-      color: #2E7D32;
-      padding: 6px 14px;
-      border-radius: 20px;
+      background: #E6FFFA;
+      color: #234E52;
+      border: 1px solid #B2F5EA;
+      padding: 8px 16px;
+      border-radius: 25px;
       font-weight: 700;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
     }
 
     .btn-admin {
-      background: #ECEFF1;
+      background: #EDF2F7;
       border: none;
-      padding: 8px 16px;
+      padding: 8px 18px;
       border-radius: 12px;
       cursor: pointer;
       font-weight: 700;
-      color: #546E7A;
+      color: #4A5568;
       transition: all 0.2s;
     }
 
     .btn-admin:hover {
-      background: #CFD8DC;
+      background: #E2E8F0;
     }
 
+    /* توسيع المساحة الرئيسية للنتائج لتكون مريحة للقراءة */
     main {
       flex: 1;
-      max-width: 850px;
-      width: 92%;
-      margin: 2.5rem auto;
+      max-width: 1050px;
+      width: 94%;
+      margin: 2rem auto;
+    }
+
+    .hero-section {
       text-align: center;
+      margin-bottom: 2rem;
     }
 
     .hero-title {
-      font-size: 2.3rem;
+      font-size: 2.5rem;
       color: var(--primary);
       margin-bottom: 0.5rem;
     }
 
     .hero-subtitle {
-      color: #7F8C8D;
-      margin-bottom: 1.8rem;
-      font-size: 1.1rem;
-    }
-
-    /* منطقة مربع بحث جوجل */
-    .search-container {
-      background: white;
-      padding: 1.2rem;
-      border-radius: 25px;
-      box-shadow: 0 8px 25px rgba(74, 144, 226, 0.12);
-      border: 3px solid #E1F5FE;
-      margin-bottom: 1.5rem;
+      color: #718096;
+      font-size: 1.15rem;
     }
 
     .quick-tags {
-      margin-bottom: 1.5rem;
+      margin: 1.5rem 0;
       display: flex;
-      gap: 10px;
+      gap: 12px;
       justify-content: center;
       flex-wrap: wrap;
       align-items: center;
@@ -117,42 +112,114 @@
 
     .tag-btn {
       background: white;
-      border: 1px solid #D0E4F5;
-      padding: 6px 14px;
+      border: 2px solid #E2E8F0;
+      padding: 8px 18px;
       border-radius: 20px;
       cursor: pointer;
-      font-size: 0.95rem;
+      font-size: 1rem;
       font-weight: 700;
-      color: #4A90E2;
-      transition: 0.2s;
+      color: var(--primary);
+      transition: all 0.2s;
     }
 
     .tag-btn:hover {
       background: var(--primary);
       color: white;
+      border-color: var(--primary);
+      transform: translateY(-2px);
     }
 
-    /* تحسين وتنسيق مظهر بحث جوجل ليتناسق مع ألوان الموقع */
+    /* حاوية البحث والنتائج الواسعة */
+    .search-wrapper {
+      background: white;
+      padding: 2rem;
+      border-radius: 24px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+      border: 2px solid #EBF8FF;
+    }
+
+    /* --- تعديل وتكبير عناصر نتائج جوجل لتناسب الأطفال --- */
     .gsc-control-cse {
       padding: 0 !important;
+      background: transparent !important;
       border: none !important;
-      background-color: transparent !important;
+      font-family: 'Tajawal', sans-serif !important;
+    }
+
+    /* شريط البحث */
+    .gsc-search-box {
+      margin-bottom: 1.5rem !important;
+    }
+
+    .gsc-input-box {
+      border-radius: 16px !important;
+      border: 2px solid #CBD5E0 !important;
+      padding: 6px 12px !important;
+      height: auto !important;
+    }
+
+    .gsc-input {
+      font-size: 1.25rem !important;
     }
 
     .gsc-search-button-v2 {
       background-color: var(--secondary) !important;
-      border-radius: 12px !important;
+      border-radius: 14px !important;
+      padding: 12px 24px !important;
       border: none !important;
-      padding: 10px 18px !important;
     }
 
-    .gsc-input-box {
-      border-radius: 15px !important;
-      border: 2px solid #E2E8F0 !important;
-      padding: 4px !important;
+    /* بطاقة النتيجة الفردية */
+    .gsc-webResult.gsc-result {
+      background: #FFFFFF !important;
+      border-bottom: 2px solid #EDF2F7 !important;
+      padding: 18px 10px !important;
+      margin-bottom: 12px !important;
+      text-align: right !important;
+      direction: rtl !important;
     }
 
-    /* النوافذ المنبثقة للتحكم */
+    /* عنوان النتيجة المقروء والواضح */
+    .gs-title, .gs-title * {
+      font-size: 1.35rem !important;
+      font-weight: 700 !important;
+      color: var(--primary) !important;
+      line-height: 1.5 !important;
+      text-decoration: none !important;
+    }
+
+    .gs-title:hover {
+      text-decoration: underline !important;
+    }
+
+    /* النص والمقتطف التوضيحي داخل النتيجة */
+    .gs-snippet {
+      font-size: 1.1rem !important;
+      line-height: 1.8 !important;
+      color: #4A5568 !important;
+      margin-top: 8px !important;
+    }
+
+    /* رابط الموقع الأصلي */
+    .gs-visibleUrl {
+      font-size: 0.95rem !important;
+      color: #38A169 !important;
+      margin-top: 4px !important;
+      font-weight: 600 !important;
+    }
+
+    /* تكبير وتوضيح الصور المصغرة بجانب النتائج */
+    .gs-image-box {
+      margin-left: 16px !important;
+    }
+
+    .gs-image-box img {
+      border-radius: 12px !important;
+      max-width: 110px !important;
+      max-height: 110px !important;
+    }
+
+    /* لوحة تحكم المسؤول */
     .modal-overlay {
       position: fixed;
       top: 0;
@@ -168,29 +235,29 @@
 
     .modal-card {
       background: white;
-      padding: 2rem;
+      padding: 2.2rem;
       border-radius: 20px;
       width: 90%;
-      max-width: 420px;
+      max-width: 440px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     }
 
     .form-group {
-      margin-bottom: 1rem;
+      margin-bottom: 1.2rem;
       text-align: right;
     }
 
     .form-group label {
       display: block;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
       font-weight: 700;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
     }
 
     .form-control {
       width: 100%;
-      padding: 10px 14px;
-      border-radius: 10px;
+      padding: 12px 14px;
+      border-radius: 12px;
       border: 1px solid #CBD5E0;
       font-size: 1rem;
       outline: none;
@@ -201,11 +268,11 @@
       background: var(--primary);
       color: white;
       border: none;
-      padding: 12px;
-      border-radius: 10px;
+      padding: 14px;
+      border-radius: 12px;
       font-weight: 700;
       cursor: pointer;
-      font-size: 1rem;
+      font-size: 1.05rem;
       margin-top: 10px;
     }
 
@@ -221,35 +288,35 @@
   <header>
     <div class="logo">🚀 المستكشف الصغير</div>
     <div style="display: flex; align-items: center; gap: 15px;">
-      <span class="badge-age" id="ageDisplay">حماية SafeSearch: مفعّلة ✅</span>
+      <span class="badge-age" id="ageDisplay">حماية Google SafeSearch ✅</span>
       <button class="btn-admin" onclick="openAdminModal()">🔒 تحكم الوالدين</button>
     </div>
   </header>
 
   <main>
-    <h1 class="hero-title">عالم المعرفة الآمن بين يديك 🌟</h1>
-    <p class="hero-subtitle">ابحث في الإنترنت بحرية وأمان عبر محرك بحث Google المفلتر للأطفال</p>
+    <div class="hero-section">
+      <h1 class="hero-title">ماذا تحب أن تقرأ وتتعلم اليوم؟ 🌟</h1>
+      <p class="hero-subtitle">نتائج واضحة، موثوقة، ومصممة خصيصاً للقراءة الممتعة والمريحة</p>
 
-    <div class="quick-tags">
-      <span style="font-weight:700; font-size: 0.9rem;">اكتشف سريعاً:</span>
-      <button class="tag-btn" onclick="triggerGoogleSearch('معلومات عن كوكب المريخ للأطفال')">🪐 المريخ</button>
-      <button class="tag-btn" onclick="triggerGoogleSearch('كيف تطير الطائرة ببساطة')">✈️ كيف تطير الطائرة؟</button>
-      <button class="tag-btn" onclick="triggerGoogleSearch('عجائب عالم البحار والأسماك')">🐬 عالم البحار</button>
-      <button class="tag-btn" onclick="triggerGoogleSearch('أسرار الأهرامات للأطفال')">🏛️ الأهرامات</button>
+      <div class="quick-tags">
+        <span style="font-weight:700; font-size: 0.95rem; color: #4A5568;">موضوعات رائجة:</span>
+        <button class="tag-btn" onclick="triggerGoogleSearch('كوكب الأرض والمجموعة الشمسية')">🌍 كوكب الأرض</button>
+        <button class="tag-btn" onclick="triggerGoogleSearch('معلومات مدهشة عن الدلافين')">🐬 الدلافين الذكية</button>
+        <button class="tag-btn" onclick="triggerGoogleSearch('كيف تشرق الشمس وتغيب؟')">☀️ الشمس والنهار</button>
+        <button class="tag-btn" onclick="triggerGoogleSearch('أكبر ديناصور عاش في التاريخ')">🦖 الديناصورات</button>
+      </div>
     </div>
 
-    <!-- حاوية محرك بحث جوجل الرسمي -->
-    <div class="search-container">
+    <!-- حاوية البحث الموسعة -->
+    <div class="search-wrapper">
       <div class="gcse-search"></div>
     </div>
   </main>
 
-  <!-- نافذة تسجيل دخول ولي الأمر -->
+  <!-- نافذة تسجيل دخول المشرف -->
   <div class="modal-overlay" id="loginModal">
     <div class="modal-card">
-      <h3>🔐 تسجيل دخول ولي الأمر</h3>
-      <p style="color:#718096; font-size:0.85rem; margin-bottom:1rem;">(البيانات الافتراضية: admin / 1234)</p>
-      
+      <h3 style="margin-bottom:1rem; color:var(--admin-bg);">🔐 دخول ولي الأمر</h3>
       <div class="form-group">
         <label>اسم المستخدم:</label>
         <input type="text" id="adminUser" class="form-control" placeholder="admin">
@@ -266,21 +333,12 @@
   <!-- نافذة إعدادات الأمان -->
   <div class="modal-overlay" id="settingsModal">
     <div class="modal-card">
-      <h3>⚙️ لوحة تحكم الوالدين</h3>
-      
+      <h3 style="margin-bottom:1rem; color:var(--admin-bg);">⚙️ إعدادات التحكم</h3>
       <div class="form-group">
-        <label>مستوى أمان البحث:</label>
-        <select class="form-control" disabled>
-          <option selected>SafeSearch الصارم (مُفعل من جوجل تلقائياً)</option>
-        </select>
+        <label>تغيير كلمة المرور الخاصة بك:</label>
+        <input type="password" id="newPassInput" class="form-control" placeholder="أدخل كلمة مرور جديدة">
       </div>
-
-      <div class="form-group">
-        <label>تغيير كلمة مرور المشرف:</label>
-        <input type="password" id="newPassInput" class="form-control" placeholder="اكتب كلمة مرور جديدة">
-      </div>
-
-      <button class="btn-action" onclick="saveSettings()">حفظ التعديلات</button>
+      <button class="btn-action" onclick="saveSettings()">حفظ التعديل</button>
       <button class="btn-action btn-close" onclick="closeModals()">إغلاق</button>
     </div>
   </div>
@@ -288,18 +346,15 @@
   <script>
     let currentAdminPass = localStorage.getItem('parent_pass') || '1234';
 
-    // البحث السريع عند الضغط على الأزرار المقترحة
     function triggerGoogleSearch(term) {
       const searchBox = document.querySelector('input.gsc-input');
       const searchButton = document.querySelector('button.gsc-search-button');
-      
       if (searchBox && searchButton) {
         searchBox.value = term;
         searchButton.click();
       }
     }
 
-    // إدارة نوافذ ولي الأمر
     function openAdminModal() {
       document.getElementById('loginModal').style.display = 'flex';
     }
@@ -319,7 +374,7 @@
         document.getElementById('adminPass').value = '';
         document.getElementById('settingsModal').style.display = 'flex';
       } else {
-        alert('كلمة المرور أو اسم المستخدم غير صحيح!');
+        alert('كلمة المرور غير صحيحة!');
       }
     }
 
