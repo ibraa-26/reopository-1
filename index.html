@@ -3,8 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>المستكشف الصغير - محرك بحث آمن للأطفال</title>
+  <title>المستكشف الصغير - مدعوم ببحث Google الآمن</title>
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700;900&display=swap" rel="stylesheet">
+  
+  <!-- سكريبت محرك بحث جوجل الخاص بك -->
+  <script async src="https://cse.google.com/cse.js?cx=c784c1f4adf2040c0"></script>
+
   <style>
     :root {
       --primary: #4A90E2;
@@ -31,7 +35,7 @@
     }
 
     header {
-      padding: 1.5rem 2rem;
+      padding: 1.2rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -74,65 +78,41 @@
 
     main {
       flex: 1;
-      max-width: 800px;
-      width: 90%;
-      margin: 3rem auto;
+      max-width: 850px;
+      width: 92%;
+      margin: 2.5rem auto;
       text-align: center;
     }
 
     .hero-title {
-      font-size: 2.2rem;
+      font-size: 2.3rem;
       color: var(--primary);
       margin-bottom: 0.5rem;
     }
 
     .hero-subtitle {
       color: #7F8C8D;
-      margin-bottom: 2rem;
+      margin-bottom: 1.8rem;
       font-size: 1.1rem;
     }
 
-    .search-box {
-      display: flex;
-      gap: 10px;
+    /* منطقة مربع بحث جوجل */
+    .search-container {
       background: white;
-      padding: 8px;
-      border-radius: 50px;
-      box-shadow: 0 8px 25px rgba(74, 144, 226, 0.15);
+      padding: 1.2rem;
+      border-radius: 25px;
+      box-shadow: 0 8px 25px rgba(74, 144, 226, 0.12);
       border: 3px solid #E1F5FE;
-    }
-
-    .search-input {
-      flex: 1;
-      border: none;
-      outline: none;
-      padding: 12px 20px;
-      font-size: 1.2rem;
-      border-radius: 50px;
-    }
-
-    .search-btn {
-      background: var(--secondary);
-      color: #fff;
-      border: none;
-      padding: 0 25px;
-      border-radius: 40px;
-      font-size: 1.1rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: transform 0.1s;
-    }
-
-    .search-btn:hover {
-      transform: scale(1.03);
+      margin-bottom: 1.5rem;
     }
 
     .quick-tags {
-      margin-top: 1.5rem;
+      margin-bottom: 1.5rem;
       display: flex;
       gap: 10px;
       justify-content: center;
       flex-wrap: wrap;
+      align-items: center;
     }
 
     .tag-btn {
@@ -142,6 +122,8 @@
       border-radius: 20px;
       cursor: pointer;
       font-size: 0.95rem;
+      font-weight: 700;
+      color: #4A90E2;
       transition: 0.2s;
     }
 
@@ -150,47 +132,27 @@
       color: white;
     }
 
-    .results-area {
-      margin-top: 2.5rem;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      text-align: right;
+    /* تحسين وتنسيق مظهر بحث جوجل ليتناسق مع ألوان الموقع */
+    .gsc-control-cse {
+      padding: 0 !important;
+      border: none !important;
+      background-color: transparent !important;
     }
 
-    .result-card {
-      background: white;
-      border-radius: 16px;
-      padding: 20px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.04);
-      border-right: 6px solid var(--accent);
-      animation: fadeIn 0.3s ease;
+    .gsc-search-button-v2 {
+      background-color: var(--secondary) !important;
+      border-radius: 12px !important;
+      border: none !important;
+      padding: 10px 18px !important;
     }
 
-    .result-title {
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: var(--primary);
-      margin-bottom: 8px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
+    .gsc-input-box {
+      border-radius: 15px !important;
+      border: 2px solid #E2E8F0 !important;
+      padding: 4px !important;
     }
 
-    .result-snippet {
-      line-height: 1.7;
-      color: #4A5568;
-    }
-
-    .no-results {
-      padding: 30px;
-      background: white;
-      border-radius: 16px;
-      color: #718096;
-      font-size: 1.1rem;
-    }
-
-    /* Modal / نافذة لوحة تحكم المسؤول */
+    /* النوافذ المنبثقة للتحكم */
     .modal-overlay {
       position: fixed;
       top: 0;
@@ -201,7 +163,7 @@
       display: none;
       justify-content: center;
       align-items: center;
-      z-index: 999;
+      z-index: 9999;
     }
 
     .modal-card {
@@ -211,11 +173,6 @@
       width: 90%;
       max-width: 420px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    }
-
-    .modal-card h3 {
-      margin-bottom: 1rem;
-      color: var(--admin-bg);
     }
 
     .form-group {
@@ -257,11 +214,6 @@
       color: #4A5568;
       margin-top: 8px;
     }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(8px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
   </style>
 </head>
 <body>
@@ -269,34 +221,30 @@
   <header>
     <div class="logo">🚀 المستكشف الصغير</div>
     <div style="display: flex; align-items: center; gap: 15px;">
-      <span class="badge-age" id="ageDisplay">الفئة العمرية: كل الأعمار</span>
+      <span class="badge-age" id="ageDisplay">حماية SafeSearch: مفعّلة ✅</span>
       <button class="btn-admin" onclick="openAdminModal()">🔒 تحكم الوالدين</button>
     </div>
   </header>
 
   <main>
-    <h1 class="hero-title">ماذا تريد أن تكتشف اليوم؟ 🌟</h1>
-    <p class="hero-subtitle">محرك بحث آمن مليء بالمعلومات الممتعة والمفيدة للأذكياء الصغار</p>
-
-    <div class="search-box">
-      <input type="text" id="searchInput" class="search-input" placeholder="اكتب سؤالك هنا (مثال: الفضاء، الديناصورات، النحل)..." onkeyup="handleKey(event)">
-      <button class="search-btn" onclick="executeSearch()">ابحث</button>
-    </div>
+    <h1 class="hero-title">عالم المعرفة الآمن بين يديك 🌟</h1>
+    <p class="hero-subtitle">ابحث في الإنترنت بحرية وأمان عبر محرك بحث Google المفلتر للأطفال</p>
 
     <div class="quick-tags">
-      <span style="font-weight:700; font-size: 0.9rem; margin-top: 4px;">اقتراحات سريعة:</span>
-      <button class="tag-btn" onclick="quickSearch('القمر')">🌕 القمر</button>
-      <button class="tag-btn" onclick="quickSearch('الديناصورات')">🦖 الديناصورات</button>
-      <button class="tag-btn" onclick="quickSearch('النحل')">🐝 عسل النحل</button>
-      <button class="tag-btn" onclick="quickSearch('المطر')">🌧️ كيف ينزل المطر؟</button>
+      <span style="font-weight:700; font-size: 0.9rem;">اكتشف سريعاً:</span>
+      <button class="tag-btn" onclick="triggerGoogleSearch('معلومات عن كوكب المريخ للأطفال')">🪐 المريخ</button>
+      <button class="tag-btn" onclick="triggerGoogleSearch('كيف تطير الطائرة ببساطة')">✈️ كيف تطير الطائرة؟</button>
+      <button class="tag-btn" onclick="triggerGoogleSearch('عجائب عالم البحار والأسماك')">🐬 عالم البحار</button>
+      <button class="tag-btn" onclick="triggerGoogleSearch('أسرار الأهرامات للأطفال')">🏛️ الأهرامات</button>
     </div>
 
-    <div class="results-area" id="resultsArea">
-      <!-- النتائج ستظهر هنا تلقائياً -->
+    <!-- حاوية محرك بحث جوجل الرسمي -->
+    <div class="search-container">
+      <div class="gcse-search"></div>
     </div>
   </main>
 
-  <!-- نافذة تسجيل دخول المسؤول -->
+  <!-- نافذة تسجيل دخول ولي الأمر -->
   <div class="modal-overlay" id="loginModal">
     <div class="modal-card">
       <h3>🔐 تسجيل دخول ولي الأمر</h3>
@@ -315,23 +263,21 @@
     </div>
   </div>
 
-  <!-- نافذة إعدادات الفلتر لولي الأمر -->
+  <!-- نافذة إعدادات الأمان -->
   <div class="modal-overlay" id="settingsModal">
     <div class="modal-card">
-      <h3>⚙️ لوحة تحكم الأمان والعمر</h3>
+      <h3>⚙️ لوحة تحكم الوالدين</h3>
       
       <div class="form-group">
-        <label>تحديد المستوى العمري للطفل:</label>
-        <select id="ageFilterSelect" class="form-control">
-          <option value="all">كل الأعمار (محتوى شامل وآمن)</option>
-          <option value="young">صغار (5 - 8 سنوات) - نصوص مبسطة وقصيرة</option>
-          <option value="older">أكبر (9 - 14 سنة) - معلومات وحقائق تفصيلية</option>
+        <label>مستوى أمان البحث:</label>
+        <select class="form-control" disabled>
+          <option selected>SafeSearch الصارم (مُفعل من جوجل تلقائياً)</option>
         </select>
       </div>
 
       <div class="form-group">
-        <label>تغيير كلمة المرور الخاصة بك:</label>
-        <input type="password" id="newPassInput" class="form-control" placeholder="اتركها فارغة إن لم ترغب بالتغيير">
+        <label>تغيير كلمة مرور المشرف:</label>
+        <input type="password" id="newPassInput" class="form-control" placeholder="اكتب كلمة مرور جديدة">
       </div>
 
       <button class="btn-action" onclick="saveSettings()">حفظ التعديلات</button>
@@ -340,127 +286,20 @@
   </div>
 
   <script>
-    // 1. قاعدة المعرفة الآمنة المصنفة حسب الفئات العمرية
-    const safeDatabase = [
-      {
-        title: "رحلة إلى القمر 🌕",
-        keywords: ["القمر", "فضاء", "كواكب", "نجوم"],
-        level: "all",
-        text: "القمر يدور حول كوكب الأرض كل 27 يوماً تقريباً، وهو يعكس ضوء الشمس لينير لنا السماء ليلاً!"
-      },
-      {
-        title: "كيف تتكون النجوم في الفضاء؟ ✨",
-        keywords: ["فضاء", "كواكب", "النجوم"],
-        level: "older",
-        text: "النجوم هي كرات ضخمة ومضيئة من الغازات الحارة جداً، وتولد داخل سحب ضخمة في الفضاء تُسمى السدم."
-      },
-      {
-        title: "الديناصورات اللطيفة 🦖",
-        keywords: ["ديناصور", "الديناصورات", "حيوانات"],
-        level: "young",
-        text: "الديناصورات كانت حيوانات ضخمة عاشت على الأرض قبل ملايين السنين، ومنها من كان يأكل أوراق الأشجار الخضراء!"
-      },
-      {
-        title: "انقراض الديناصورات وعصورها 🦕",
-        keywords: ["ديناصور", "الديناصورات", "تاريخ"],
-        level: "older",
-        text: "عاشت الديناصورات في العصور الجيولوجية الثلاثة (الترياسي والجوراسي والطباشيري)، ويعتقد العلماء أن نيزكاً ضخماً ضرب كوكب الأرض وسبب اختفاءها."
-      },
-      {
-        title: "مملكة النحل والعسل 🐝",
-        keywords: ["النحل", "عسل", "حشرات", "طبيعة"],
-        level: "all",
-        text: "يزور النحل آلاف الأزهار يومياً لجمع الرحيق وصنع العسل اللذيذ المفيد لصحة أجسادنا."
-      },
-      {
-        title: "كيف ينزل المطر؟ 🌧️",
-        keywords: ["المطر", "سحاب", "ماء", "طقس"],
-        level: "all",
-        text: "تسخن الشمس مياه البحر، فيتصاعد بخار الماء ليشكل الغيوم في السماء، وحين تبرد الغيوم تسقط القطرات كمطر جميل!"
-      }
-    ];
-
-    // قائمة الكلمات غير اللائقة الممنوعة كلياً
-    const blockedWords = ["عنف", "دم", "سلاح", "موت", "كبار", "حرب"];
-
-    // 2. إعدادات ولي الأمر (المخزنة محلياً)
     let currentAdminPass = localStorage.getItem('parent_pass') || '1234';
-    let activeAgeFilter = localStorage.getItem('parent_age') || 'all';
 
-    // تحديث شارة العمر في الواجهة
-    function updateAgeBadge() {
-      const display = document.getElementById('ageDisplay');
-      if (activeAgeFilter === 'young') display.innerText = 'الفئة العمرية: (5 - 8 سنوات)';
-      else if (activeAgeFilter === 'older') display.innerText = 'الفئة العمرية: (9 - 14 سنة)';
-      else display.innerText = 'الفئة العمرية: كل الأعمار';
-    }
-    updateAgeBadge();
-
-    // 3. محرك البحث والفلترة
-    function executeSearch() {
-      const query = document.getElementById('searchInput').value.trim().toLowerCase();
-      const resultsArea = document.getElementById('resultsArea');
-      resultsArea.innerHTML = '';
-
-      if (!query) {
-        resultsArea.innerHTML = '<div class="no-results">اكتب كلمة في مربع البحث أعلاه للبدء بالاستكشاف! 🚀</div>';
-        return;
+    // البحث السريع عند الضغط على الأزرار المقترحة
+    function triggerGoogleSearch(term) {
+      const searchBox = document.querySelector('input.gsc-input');
+      const searchButton = document.querySelector('button.gsc-search-button');
+      
+      if (searchBox && searchButton) {
+        searchBox.value = term;
+        searchButton.click();
       }
-
-      // التحقق من الكلمات المحظورة
-      const hasBlocked = blockedWords.some(w => query.includes(w));
-      if (hasBlocked) {
-        resultsArea.innerHTML = `
-          <div class="result-card" style="border-right-color: #E74C3C;">
-            <div class="result-title" style="color: #E74C3C;">⚠️ تنبيه لطيف</div>
-            <p class="result-snippet">هذا السؤال يحتوي على موضوعات غير مخصصة للأطفال في هذا المستكشف. حاول البحث عن الحيوانات، الفضاء، أو العلوم! 🌿</p>
-          </div>
-        `;
-        return;
-      }
-
-      // البحث والتصفية حسب الفئة العمرية
-      const filtered = safeDatabase.filter(item => {
-        // فلتر الكلمات
-        const matchKeyword = item.keywords.some(k => query.includes(k)) || item.title.toLowerCase().includes(query) || item.text.toLowerCase().includes(query);
-        if (!matchKeyword) return false;
-
-        // فلتر العمر المحدد من قبل ولي الأمر
-        if (activeAgeFilter === 'all') return true;
-        return item.level === 'all' || item.level === activeAgeFilter;
-      });
-
-      if (filtered.length === 0) {
-        resultsArea.innerHTML = `
-          <div class="no-results">
-            لم نجد معلومات حول "<strong>${query}</strong>" متناسبة مع مستواك العمري الحالي. جرب البحث عن كلمات أخرى مثل: النحل، القمر، الديناصورات! 💡
-          </div>
-        `;
-        return;
-      }
-
-      // عرض النتائج الآمنة
-      filtered.forEach(item => {
-        const card = document.createElement('div');
-        card.className = 'result-card';
-        card.innerHTML = `
-          <div class="result-title">${item.title}</div>
-          <div class="result-snippet">${item.text}</div>
-        `;
-        resultsArea.appendChild(card);
-      });
     }
 
-    function handleKey(e) {
-      if (e.key === 'Enter') executeSearch();
-    }
-
-    function quickSearch(word) {
-      document.getElementById('searchInput').value = word;
-      executeSearch();
-    }
-
-    // 4. إدارة لوحة تحكم المسؤول
+    // إدارة نوافذ ولي الأمر
     function openAdminModal() {
       document.getElementById('loginModal').style.display = 'flex';
     }
@@ -478,31 +317,20 @@
         document.getElementById('loginModal').style.display = 'none';
         document.getElementById('adminUser').value = '';
         document.getElementById('adminPass').value = '';
-        
-        // فتح شاشة الإعدادات
-        document.getElementById('ageFilterSelect').value = activeAgeFilter;
         document.getElementById('settingsModal').style.display = 'flex';
       } else {
-        alert('بيانات الدخول غير صحيحة!');
+        alert('كلمة المرور أو اسم المستخدم غير صحيح!');
       }
     }
 
     function saveSettings() {
-      const newAge = document.getElementById('ageFilterSelect').value;
       const newPass = document.getElementById('newPassInput').value.trim();
-
-      activeAgeFilter = newAge;
-      localStorage.setItem('parent_age', activeAgeFilter);
-
       if (newPass) {
         currentAdminPass = newPass;
         localStorage.setItem('parent_pass', currentAdminPass);
       }
-
-      updateAgeBadge();
       closeModals();
-      alert('تم حفظ إعدادات الأمان بنجاح!');
-      executeSearch(); // إعادة تطبيق الفلتر على البحث الحالي
+      alert('تم حفظ التعديلات بنجاح!');
     }
   </script>
 </body>
